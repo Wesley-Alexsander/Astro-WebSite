@@ -1,0 +1,978 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  --header-height: 3rem;
+
+  /*====== Color ======*/
+  --hue: 206;
+  --black-color: hsl(var(--hue), 4%, 4%);
+  --alternative-black: hsl(var(--hue), 4%, 8%);
+  --title-color: hsl(var(--hue), 4%, 95%);
+  --text-color: hsl(var(--hue), 4%, 75%);
+  --text-color-light: hsl(var(--hue), 4%, 65%);
+  --body-color: hsl(var(--hue), 4%, 6%);
+  --white-color: #fff;
+  --container-color: hsl(var(--hue), 4%, 10%);
+  --text-gradient: linear-gradient(
+    hsl(var(--hue), 4%, 24%),
+    hsl(var(--hue), 4%, 8%)
+  );
+  --scroll-thumb-color: hsl(var(--hue), 4%, 16%);
+  --scroll-thumb-color-alt: hsl(var(--hue), 4%, 20%);
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --biggest-font-size: 5rem;
+  --bigger-font-size: 3rem;
+  --big-font-size: 2.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1.125rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
+  --text-line-height: 2rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes Bottom ==========*/
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*===================== Document Reset ================*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 3rem 0 0 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+/*================ Classes reutilizaveis Css ===========*/
+.section {
+  padding: 4rem 0 2rem;
+}
+
+.section-title {
+  font-size: var(--bigger-font-size);
+  text-align: center;
+  margin-bottom: var(--mb-2-5);
+}
+
+.section-title-gradient {
+  background: var(--text-gradient);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/*=========================== Layout ====================*/
+
+.main {
+  overflow: hidden; /*For animation and images*/
+}
+
+.container {
+  max-width: 100%;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+}
+
+.grid {
+  display: grid;
+}
+
+/*=========================== Header =====================*/
+
+.header {
+  width: 100vw;
+  position: fixed;
+  top: 0rem;
+  left: 0;
+  z-index: 100;
+  background: var(--body-color);
+}
+
+.scroll-header {
+  background-color: #0e0e0e;
+}
+
+/*======================== NAV =======================*/
+
+.nav {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav img {
+  display: flex;
+  width: 8rem;
+}
+
+.nav-toggle {
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  display: visible;
+  position: relative;
+  top: 0%;
+}
+
+@media screen and (max-width: 767px) {
+  .nav-menu {
+    position: fixed;
+    background-color: var(--body-color);
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 4rem 0 3rem;
+    transition: .4s;
+  }
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+}
+
+.nav-link {
+  color: var(--white-color);
+  font-size: var(--h2-font-size);
+  text-transform: uppercase;
+  font-weight: var(--font-semi-bold);
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-link:hover {
+  color: var(--white-color);
+}
+
+.nav-close {
+  position: absolute;
+  font-size: 1.5rem;
+  top: -2.6rem;
+  right: 1.392rem;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.show-menu {
+  top: 7%;
+  transition: 0.5s;
+}
+
+.remove-toggle {
+  display: none;
+  transition: 0.2s;
+  position: relative;
+  top: 30%;
+}
+
+/*========================== Home ===================*/
+.home-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 1.5rem;
+}
+
+.home-data {
+  padding-top: 15rem;
+}
+
+.home-header {
+  position: relative;
+}
+
+.home-title {
+  font-size: var(--bigger-font-size);
+  background: var(--text-gradient);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  position: absolute;
+  top: -6rem;
+  left: 0.3rem;
+  line-height: 3.3rem;
+}
+
+.home-subtitle {
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-1);
+}
+
+.home-header {
+  font-size: var(--h3-font-size);
+  font-weight: var(--mb-2-5);
+  margin-bottom: var(--mb-1);
+}
+
+.home-description {
+  margin-bottom: var(--mb-2-5);
+  line-height: var(--text-line-height);
+}
+
+.home-price {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-semi-bold);
+  margin-left: var(--mb-0-75);
+}
+
+/*================================== Button ==================*/
+.button {
+  display: inline-block;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: var(--alternative-black);
+}
+
+.button-icon {
+  font-size: 1.2rem;
+}
+
+.button-flex {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 0.75rem;
+}
+
+/*=============================== Sponsor =================================*/
+.sponsor-img {
+  width: 5.625rem;
+}
+
+.sponsor-container {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(110px, 1fr)
+  ); /*repeat(auto-fit, minmax(110px, 1fr))*/
+  row-gap: 5rem;
+  justify-items: center;
+  align-items: center;
+}
+
+/*=============================== Specs =================================*/
+.specs-container {
+  position: relative;
+}
+
+.specs-content {
+  row-gap: 1.5rem;
+}
+
+.specs-data {
+  display: grid;
+  row-gap: 0.25rem;
+}
+
+.specs-icon {
+  color: var(--white-color);
+}
+
+.specs-title {
+  font-size: 0.938rem;
+  font-weight: var(--font-medium);
+}
+
+.specs-subtitle {
+  font-size: var(--small-font-size);
+  max-width: 15rem;
+}
+
+.specs-data:nth-child(1),
+.specs-data:nth-child(4) {
+  margin-left: 1.25rem;
+}
+
+.specs-data:nth-child(3),
+.specs-data:nth-child(2) {
+  margin-left: -0.5rem;
+}
+
+.specs-img {
+  width: 15.629rem;
+  position: absolute;
+  top: 6rem;
+  right: -4rem;
+}
+
+/*==================    ASTRO MixAmp M80     =======================*/
+
+.mix-container {
+  position: relative;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.mix-data {
+  padding: 5rem 0 3rem;
+}
+
+.mix-img {
+  width: 30rem;
+  position: absolute;
+  left: -8rem;
+}
+
+.mix-description {
+  margin-bottom: var(--mb-1-5);
+  line-height: 1.5rem;
+}
+
+/*==================    Discount     =======================*/
+
+.discount-container {
+  position: relative;
+  background-color: var(--container-color);
+  padding: 2rem 1.5rem;
+  border-radius: 0.75rem;
+}
+
+.discount-title {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-0-75);
+}
+
+.discount-description {
+  margin-bottom: var(--mb-1);
+}
+
+.discount-img {
+  width: 18, 75rem;
+  position: absolute;
+  top: 1.5rem;
+  right: -7.99rem;
+}
+
+/*=====================    Products     =======================*/
+.product-line {
+  line-height: 4rem;
+}
+
+.products-container {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem 1.5rem;
+  padding-top: 3rem;
+}
+
+.products-card {
+  position: relative;
+  height: 8.25rem;
+  background: var(--container-color);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  display: grid;
+}
+
+.products-img {
+  width: 10rem;
+  position: absolute;
+  inset: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: -3rem;
+}
+
+.products-content {
+  align-self: flex-end;
+}
+
+.products-title,
+.products-price {
+  font-size: var(--small-font-size);
+}
+
+.products-price {
+  font-weight: var(--font-semi-bold);
+}
+
+.products-button {
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.4rem;
+  padding: 0.4rem;
+  border-radius: 0.35rem;
+}
+
+/*=====================   Footer     =======================*/
+
+.footer-container {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  row-gap: 2rem;
+}
+
+.footer-logo {
+  width: 10rem;
+}
+
+.footer-title {
+  font-size: var(--h3-font-size);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--mb-1);
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.footer-link {
+  color: var(--text-color);
+}
+
+.footer-link:hover {
+  color: var(--white-color);
+}
+
+.footer-form {
+  display: flex;
+  column-gap: 0.5rem;
+  background: var(--container-color);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: var(--mb-2);
+}
+
+.footer-input {
+  background: var(--container-color);
+  width: 90%;
+  color: var(--white-color);
+}
+
+.footer-input::placeholder {
+  /*Altera a propriedade PlaceHolder da tag.*/
+  color: var(--text-color);
+  font-size: var(--normal-font-size);
+  font-family: var(--body-color);
+}
+
+.footer-social {
+  display: flex;
+  column-gap: 1.25rem;
+}
+
+.footer-social-link {
+  display: inline-flex; /*faz o item ocupar apenas o espaço do conteudo*/
+  color: var(--white-color);
+  background-color: var(--container-color);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.footer-social-link:hover {
+  background-color: var(--black-color);
+}
+
+.footer-copy {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.footer-copy-link {
+  font-size: var(--small-font-size);
+  color: var(--text-color-light);
+}
+
+/*===================== Scroll Up ======================*/
+
+.scroll-up {
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  display: flex;
+  background-color: var(--container-color);
+  border-radius: 0.25rem;
+  padding: 0.45rem;
+  z-index: 10;
+  transition: 0.4s;
+}
+
+.scroll-up:hover {
+  background: var(--black-color);
+}
+
+.scroll-up-icon {
+  color: var(--white-color);
+}
+
+/*====== Show Scroll Up ======*/
+.show-scroll {
+  bottom: 5rem;
+}
+
+/*====== Scroll Bar ======*/
+.active-link {
+  background: var(--white-color);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/*===================== Scroll Bar ======================*/
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb-color);
+  border-radius: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scroll-thumb-color-alt);
+}
+
+/*===================== Media Queries ======================*/
+
+
+/* For small devices */
+@media screen and (max-width: 340px) {
+  /*========= change container margin =========*/
+  .container {
+    margin-left: var(--mb-1);
+    margin-right: var(--mb-1);
+  }
+
+  /*========= change Section titles =========*/
+  .section-title,
+  .home-title {
+    font-size: var(--big-font-size);
+  }
+
+  /*========= change Home  =========*/
+
+  .home-img {
+    top: -1rem;
+  }
+
+  .home-data {
+    padding-top: 9rem;
+  }
+
+  .home-description {
+    font-size: var(--small-font-size);
+  }
+
+  /*========= change Spec  =========*/
+
+  .specs-img {
+    width: 12, 5rem;
+    top: 8rem;
+    right: -3.5rem;
+  }
+
+  .specs-container {
+    grid-template-columns: 0.6fr 1fr;
+  }
+
+  /*========= change mixAmp  =========*/
+
+  .mix-container {
+    grid-template-columns: 0.6fr 1.1fr;
+  }
+
+  .mix-img {
+    width: 13, 75rem;
+    top: 2rem;
+  }
+
+  .mix-data {
+    padding: 0;
+  }
+
+  /*======= change Discount =======*/
+  .discount-img {
+    display: none;
+  }
+
+  /*======= change Products =======*/
+  .products-container {
+    grid-template-columns: 1fr;
+    margin: 0 4rem;
+  }
+
+  .products-card {
+    width: 9rem;
+  }
+
+  /*======= change nav-close =======*/
+
+  .nav-close {
+    top: -2.5rem;
+    right: 0.85rem;
+  }
+}
+
+/* =========== Reset Items ===========*/
+
+  
+
+
+
+
+@media screen and (max-width: 420px) {
+  .nav-menu {
+    margin-top: -.54rem;
+    
+  }
+
+  .nav-close {
+    top: -1.9rem;
+    right: 1.392rem;
+  }
+  
+
+}
+
+@media screen and (min-width: 320px) {
+  .nav-menu {
+    margin-top: -.24rem;
+    
+  }
+
+  .nav-close {
+    top: -1.9rem;
+    right: 1.392rem;
+  }
+  
+}
+
+
+@media screen and (min-width: 375px) {
+  .discount-img {
+    width: 20rem;
+  }
+
+  .nav-menu {
+    margin-top: -.54rem;
+    
+  }
+
+}
+
+/* For medium devices */
+
+@media screen and (min-width: 576px) {
+  
+  .home-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .home-data {
+    padding-top: 2rem;
+  }
+
+  .home-img {
+    width: 30rem;
+    top: 1.1rem;
+    left: -7rem;
+  }
+
+  /*======= change Specs =======*/
+  
+   .specs-img {
+    position: initial;
+  }
+
+  .specs-container {
+    grid-template-columns: .5fr 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .specs-img {
+    width: 70rem;
+  }
+
+   /*========= change mixAmp  =========*/
+
+   .mix-container {
+    grid-template-columns: max-content 15,625rem;
+    justify-content: center;
+    align-items: center;
+    column-gap: 2rem;
+  }
+
+  .mix-img {
+    position: initial;
+  
+  }
+
+  .mix-data {
+    padding: 0;
+  }
+
+  
+  /*========= discount  =========*/
+  .discount-img {
+    position: initial;
+    
+  }
+
+  .discount-container {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+  }
+
+  /*========= discount  =========*/
+
+  .products-container {
+    grid-template-columns: repeat(3, 8rem);
+    justify-content: center;
+  }
+
+  
+}
+
+/* medium for large devices */
+
+@media screen and (min-width: 767px) {
+ 
+  body {
+    margin: 0.5;
+  }
+
+  .section {
+    padding: 6rem 0 2rem;
+  }
+
+ /*========= Nav Menu  =========*/
+  .nav {
+    height: calc(var(--header-height) + 1.5rem);
+  }
+  
+
+  .nav-list {
+    flex-direction: row;
+    column-gap: 3.5rem;
+  }
+
+  .nav-link{
+    font-size: var(--normal-font-size);
+    text-transform: initial;
+  }
+
+  .nav-toggle, .nav-close { 
+    display: none;
+  }
+
+   /*========= Home =========*/
+  .home-container {
+    position: relative;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-img {
+    top: -8rem;
+  }
+
+   /*========= Specs  =========*/
+  .specs-container {
+    grid-template-columns: 1fr 1.5fr;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .specs-data {
+    justify-content: center;
+    align-items: center;
+  }
+  
+ .specs-data:nth-child(1), .specs-data:nth-child(4) {
+   margin-left:  8rem;
+ } 
+
+  .specs-data:nth-child(3) {
+    margin-left: -2rem;
+  }
+
+   /*========= Mix  =========*/
+  .mix-container {
+    column-gap: 5rem;
+  }
+
+  .mix-img {
+    width: 18,75rem;
+  }
+
+  .mix-description {
+    margin-bottom: var(--mb-2);
+  }
+
+  /*========= discount  =========*/
+ 
+  .discount-title {
+    font-size: var(--h2-font-size);
+    margin-bottom: var(--mb-1);
+  }
+
+  .discount-description {
+    margin-bottom: var(--mb-2);
+  }
+
+  /*========= Products  =========*/
+
+  .products-container {
+    grid-template-columns: repeat(3, 162px);
+    gap: 6rem 3rem ; 
+    padding-top: 5rem;
+  }
+
+  .products-card {
+    height: 152px;
+    padding: .85rem;
+  }
+
+  /*========= Footer  =========*/
+
+  .footer-container {
+    grid-template-columns: .4fr .7fr .7fr 1fr;
+  }
+
+  .footer-logo {
+    width: 5rem;
+
+    /* para alinhar ao centro podemos usar
+    margin-top: auto;
+    margin-bottom: auto;*/
+  }
+
+}
+
+/* For large devices */
+
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+   /*========= Nav  =========*/
+  .nav {
+    margin: 0 2rem
+  }
+  
+   /*========= Home  =========*/
+   
+   .home-img {
+     width: 600px;
+     left: 0;
+     top: -10rem;
+   }
+
+   .home-title {
+     top: -5rem;
+     left: 3.5rem;
+   }
+  
+  .home-description {
+    padding-right: 5rem;
+  }
+   
+  /*========= Sponsor  =========*/
+  .sponsor-img {
+    width: 100px;
+  }
+
+  /*========= Specs  =========*/
+  .specs-img {
+    width: 100%;
+  }
+
+  /*========= MixAmp  =========*/
+  .mix-description {
+    padding-right: 8rem;
+  }
+
+  .mix-img {
+    width: 100%;
+  }
+
+  /*========= Discount  =========*/
+  .discount-container {
+    width: 60rem;
+  }
+
+  .discount-animation {
+    text-align: center;
+  }
+
+  .discount-img {
+    width: 350px;
+  }
+ 
+  /*========= Discount  =========*/
+
+  .footer-container {
+    padding-top: 3rem;
+  }
+
+  .footer-logo {
+    width: 8rem;
+    margin: 0 auto;
+  }
+}
